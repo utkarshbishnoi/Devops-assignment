@@ -1,5 +1,5 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS builder
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS builder
 
 COPY . .
 
@@ -11,7 +11,7 @@ RUN dotnet publish Api/Api.csproj -c Release -o /app
 
 RUN dotnet test Api/Api.csproj --logger "trx;LogFileName=./aspnetapp.trx"
 
-FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS final
 
 WORKDIR /app
 
